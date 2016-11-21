@@ -1,0 +1,35 @@
+{
+  "name": "hane-config",
+  "version": "0.2.0",
+  "description": "Config parser for hanejs.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/index.es > lib/index.js",
+    "postinstall": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanejs/hane-config.git"
+  },
+  "keywords": [
+    "hane",
+    "hanejs",
+    "config",
+    "parser"
+  ],
+  "author": "tengattack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hanejs/hane-config/issues"
+  },
+  "homepage": "https://github.com/hanejs/hane-config#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2017-node7": "^0.4.1"
+  },
+  "dependencies": {
+    "js-yaml": "^3.7.0",
+    "lodash": "^4.17.2"
+  }
+}
