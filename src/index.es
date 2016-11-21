@@ -14,16 +14,22 @@ class HaneConfig {
     }
   }
   constructor(root) {
-    let config
-    try {
-      const configPath = path.join(root, 'hane.yml')
-      const data = fs.readFileSync(configPath, 'utf8')
-      config = yaml.safeLoad(data)
-      config = pick(config, configValidFields)
-      config = { ...HaneConfig.defaultConfig, ...config }
-    } catch (e) {
-      config = cloneDeep(HaneConfig.defaultConfig)
+    let config = HaneConfig.defaultConfig
+               ? cloneDeep(HaneConfig.defaultConfig)
+               : {}
+
+    if (root) {
+      try {
+        const configPath = path.join(root, 'hane.yml')
+        const data = fs.readFileSync(configPath, 'utf8')
+        const _config = yaml.safeLoad(data)
+        _config = pick(_config, configValidFields)
+        config = { ...config, ..._config }
+      } catch (e) {
+        config = cloneDeep(HaneConfig.defaultConfig)
+      }
     }
+
     this.config = config
   }
   get render() {
