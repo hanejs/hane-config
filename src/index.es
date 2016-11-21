@@ -3,7 +3,7 @@ import path from 'path'
 import yaml from 'js-yaml'
 import { pick } from 'lodash'
 
-const configValidFields = [ 'render', 'deployer' ]
+const configValidFields = [ 'blog', 'render', 'deployer' ]
 
 class HaneConfig {
   static defaultConfig = null

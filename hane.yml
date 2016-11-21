@@ -1,4 +1,7 @@
+blog:
+  title: hane
 
 render:
   type: markdown
-  html: true
+  html: false
+  linkify: true
