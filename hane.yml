@@ -1,0 +1,4 @@
+
+render:
+  type: markdown
+  html: true

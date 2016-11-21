@@ -6,6 +6,13 @@ import { pick } from 'lodash'
 const configValidFields = [ 'render', 'deployer' ]
 
 class HaneConfig {
+  static defaultConfig = null
+  static getDefault() {
+    if (!HaneConfig.defaultConfig) {
+      const root = path.join(__dirname, '..')
+      HaneConfig.defaultConfig = new HaneConfig(root).config
+    }
+  }
   constructor(root) {
     let config
     try {
@@ -13,6 +20,7 @@ class HaneConfig {
       const data = fs.readFileSync(configPath, 'utf8')
       config = yaml.safeLoad(data)
       config = pick(config, configValidFields)
+      config = { ...HaneConfig.defaultConfig, ...config }
     } catch (e) {
       config = {}
     }
@@ -22,5 +30,7 @@ class HaneConfig {
     return this.config.render || {}
   }
 }
+
+HaneConfig.getDefault()
 
 export default HaneConfig
