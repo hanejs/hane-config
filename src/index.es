@@ -1,7 +1,7 @@
 
 import path from 'path'
 import yaml from 'js-yaml'
-import { pick } from 'lodash'
+import { pick, cloneDeep } from 'lodash'
 
 const configValidFields = [ 'blog', 'render', 'deployer' ]
 
@@ -22,7 +22,7 @@ class HaneConfig {
       config = pick(config, configValidFields)
       config = { ...HaneConfig.defaultConfig, ...config }
     } catch (e) {
-      config = {}
+      config = cloneDeep(HaneConfig.defaultConfig)
     }
     this.config = config
   }
