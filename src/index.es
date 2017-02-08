@@ -35,6 +35,9 @@ class HaneConfig {
   get render() {
     return this.config.render || {}
   }
+  get theme() {
+    return this.config.theme || {}
+  }
 }
 
 HaneConfig.getDefault()

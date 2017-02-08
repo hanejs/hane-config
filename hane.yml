@@ -5,3 +5,6 @@ render:
   type: markdown
   html: false
   linkify: true
+
+theme:
+  beautify: true
