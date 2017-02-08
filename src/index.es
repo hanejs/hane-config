@@ -1,9 +1,10 @@
 
+import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
 import { pick, cloneDeep } from 'lodash'
 
-const configValidFields = [ 'blog', 'render', 'deployer' ]
+const configValidFields = [ 'blog', 'render', 'theme', 'deployer' ]
 
 class HaneConfig {
   static defaultConfig = null
@@ -22,7 +23,7 @@ class HaneConfig {
       try {
         const configPath = path.join(root, 'hane.yml')
         const data = fs.readFileSync(configPath, 'utf8')
-        const _config = yaml.safeLoad(data)
+        let _config = yaml.safeLoad(data)
         _config = pick(_config, configValidFields)
         config = { ...config, ..._config }
       } catch (e) {
